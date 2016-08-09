@@ -3,4 +3,5 @@ maintainer       'Clearscale'
 maintainer_email ''
 license          'All rights reserved'
 description      'Configures wordpress'
-version          '0.1.1'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.2'
