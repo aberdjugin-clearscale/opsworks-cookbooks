@@ -39,7 +39,14 @@ node[:deploy].each do |app_name, deploy|
         )
     end
 
-
+	bash 'log' do
+		cwd '/root'
+		code <<-EOH
+		echo " DB: #{deploy[:database][:database]}\n user: #{deploy[:database][:username]}\n password: #{deploy[:database][:password]}\n host: #{deploy[:database][:host]\n template }" > /root/test_m
+		EOH
+		end
+	
+	
 	# Import Wordpress database backup from file if it exists
 #	mysql_command = "/usr/bin/mysql -h #{deploy[:database][:host]} -u #{deploy[:database][:username]} #{node[:mysql][:server_root_password].blank? ? '' : "-p#{node[:mysql][:server_root_password]}"} #{deploy[:database][:database]}"
 
