@@ -42,7 +42,7 @@ node[:deploy].each do |app_name, deploy|
 	bash 'log' do
 		cwd '/root'
 		code <<-EOH
-		echo " DB: #{deploy[:database][:database]}\n user: #{deploy[:database][:username]}\n password: #{deploy[:database][:password]}\n host: #{deploy[:database][:host]\n template }" > /root/test_m
+		echo " DB: #{deploy[:database][:database]}\n user: #{deploy[:database][:username]}\n password: #{deploy[:database][:password]}\n host: #{deploy[:database][:host]}\n template: #{deploy[:deploy_to]}" > /root/test_m
 		EOH
 		end
 	
