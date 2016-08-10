@@ -31,27 +31,20 @@ node[:deploy].each do |app_name, deploy|
         end
 
         variables(
-            :database   => (deploy[:database][:database] rescue nil),
-            :user       => (deploy[:database][:username] rescue nil),
-            :password   => (deploy[:database][:password] rescue nil),
-            :host       => (deploy[:database][:host] rescue nil),
+            :database   => (opsworks[:database][:database] rescue nil),
+            :user       => (opsworks[:database][:username] rescue nil),
+            :password   => (opsworks[:database][:password] rescue nil),
+            :host       => (opsworks[:database][:host] rescue nil),
             :keys       => (keys rescue nil)
         )
     end
 
-	bash 'log' do
-		cwd '/root'
-		code <<-EOH
-		echo " DB: #{deploy[:database][:database]}\n user: #{deploy[:database][:username]}\n password: #{deploy[:database][:password]}\n host: #{deploy[:database][:host]}\n template: #{deploy[:deploy_to]}" > /root/test_m
-		EOH
-		end
-	
 	
 	# Import Wordpress database backup from file if it exists
 #	mysql_command = "/usr/bin/mysql -h #{deploy[:database][:host]} -u #{deploy[:database][:username]} #{node[:mysql][:server_root_password].blank? ? '' : "-p#{node[:mysql][:server_root_password]}"} #{deploy[:database][:database]}"
-
+#
 #	Chef::Log.debug("Importing Wordpress database backup...")
-#	script "memory_swap" do
+#	script "restore_db" do
 #		interpreter "bash"
 #		user "root"
 #		cwd "#{deploy[:deploy_to]}/current/"
