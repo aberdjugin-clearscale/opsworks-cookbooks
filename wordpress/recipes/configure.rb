@@ -31,14 +31,15 @@ node[:deploy].each do |app_name, deploy|
         end
 
         variables(
-            :database   => (opsworks[:database][:database] rescue nil),
-            :user       => (opsworks[:database][:username] rescue nil),
-            :password   => (opsworks[:database][:password] rescue nil),
-            :host       => (opsworks[:database][:host] rescue nil),
+            :database   => (node[:opsworks][:database][:database] rescue nil),
+            :user       => (node[:opsworks][:database][:username] rescue nil),
+            :password   => (node[:opsworks][:database][:password] rescue nil),
+            :host       => (node[:opsworks][:database][:host] rescue nil),
             :keys       => (keys rescue nil)
         )
     end
 
+	
 	
 	# Import Wordpress database backup from file if it exists
 #	mysql_command = "/usr/bin/mysql -h #{deploy[:database][:host]} -u #{deploy[:database][:username]} #{node[:mysql][:server_root_password].blank? ? '' : "-p#{node[:mysql][:server_root_password]}"} #{deploy[:database][:database]}"
