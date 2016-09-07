@@ -19,26 +19,17 @@ template '/var/ossec/etc/ossec.conf' do
   mode 0640
   variables ({
 	:OSSEC_SERVER => node[:opsworks][:ossec][:serverip],
-	:INSTANCE_TYPE => INSTANCE_TYPE
+	:INSTANCE_TYPE => node[:opsworks][:ossec][:instancetype]
   })
 end  
   
-file '/var/ossec/etc/client.keys' do
-  action :delete
-end
-  
-Dir['/var/ossec/etc/shared/*'].each do |path|
-  file path do
-    action :delete
-  end
-end
-
 # register agent on server
 # We need to relaunch agent twice in first time, because at first launch agent just downloads config and share data from server, but doesn't use it.
 bash 'register-client' do
   cwd '/root'
   code <<-EOH 
-/var/ossec/bin/agent-auth -m ${OSSEC_SERVER_IP} -p 1515 -A `curl http://169.254.169.254/latest/meta-data/instance-id` && echo "true" > /var/ossec/etc/registered
+rm -f /var/ossec/etc/client.keys
+/var/ossec/bin/agent-auth -m ${node[:opsworks][:ossec][:serverip]} -p 1515 -A `curl http://169.254.169.254/latest/meta-data/instance-id` && echo "true" > /var/ossec/etc/registered
 /etc/init.d/ossec stop
 sleep 5
 /etc/init.d/ossec start
