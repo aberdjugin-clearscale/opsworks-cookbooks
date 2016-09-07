@@ -13,7 +13,7 @@ not_if "dpkg-query -l ossec-hids-agent 2>/dev/null"
 end
 
 template '/var/ossec/etc/ossec.conf' do
-  source 'ossec.conf'
+  source 'ossec.conf.erb'
   owner 'root'
   group 'root'
   mode 0640
