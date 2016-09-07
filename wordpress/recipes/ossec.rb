@@ -29,14 +29,11 @@ bash 'register-client' do
   cwd '/root'
   code <<-EOH 
 rm -f /var/ossec/etc/client.keys
-/var/ossec/bin/agent-auth -m ${node[:opsworks][:ossec][:serverip]} -p 1515 -A `curl http://169.254.169.254/latest/meta-data/instance-id` && echo "true" > /var/ossec/etc/registered
-/etc/init.d/ossec stop
+/var/ossec/bin/agent-auth -m #{node[:opsworks][:ossec][:serverip]} -p 1515 -A `curl http://169.254.169.254/latest/meta-data/instance-id` && echo "true" > /var/ossec/etc/registered
+sleep 3
+/etc/init.d/ossec restart
 sleep 5
-/etc/init.d/ossec start
-sleep 15
-/etc/init.d/ossec stop
-sleep 5
-/etc/init.d/ossec start
+/etc/init.d/ossec restart
   EOH
 not_if { File.exists?("/var/ossec/etc/registered") }
 end
