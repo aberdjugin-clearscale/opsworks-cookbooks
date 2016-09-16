@@ -89,5 +89,12 @@ define ('WPLANG', '');
 if ( !defined('ABSPATH') )
         define('ABSPATH', dirname(__FILE__) . '/');
 
+/**
+ * Reset login and admin paths
+ */
+define('WP_ADMIN_SECRET_PATH', 'secret-admin');
+define('ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_SECRET_PATH);
+define('WP_LOGIN_SECRET_PATH', 'secret-login');
+
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
