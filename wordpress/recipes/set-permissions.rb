@@ -7,7 +7,7 @@
 ##
 #
 
-execute set_permissions do
+execute 'set_permissions' do
 	command "chown -R www-data:www-data #{node[:deploy][:nimblestorage][:deploy_to]}/current"
 	action :run
 end
