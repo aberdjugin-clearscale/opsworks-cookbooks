@@ -8,6 +8,6 @@
 #command "chown -R www-data:www-data #{node[:deploy][:nimblestorage][:deploy_to]}/current"
 
 execute 'set_permissions' do
-	command "chown -R www-data:www-data /srv/www/nimblestorage"
+	command "chown -R www-data:www-data #{node[:deploy][:nimblestorage][:deploy_to]}"
 	action :run
 end
