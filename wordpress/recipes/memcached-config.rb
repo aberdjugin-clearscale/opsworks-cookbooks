@@ -12,3 +12,11 @@ template '/etc/php5/mods-available/memcached.ini' do
      		:cache_srv => node[:deploy][:elasticache]
     	})
 end
+
+link '/etc/php5/mods-available/memcached.ini' do
+	to '/etc/php5/apache2/conf.d/20-memcached.ini'
+end
+
+link '/etc/php5/mods-available/memcached.ini' do
+	to '/etc/php5/cli/conf.d/20-memcached.ini'
+end
