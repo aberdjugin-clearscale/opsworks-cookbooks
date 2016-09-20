@@ -13,18 +13,18 @@ template '/etc/php5/mods-available/memcached.ini' do
     	})
 end
 
-#link '/etc/php5/mods-available/memcached.ini' do
-#	to '/etc/php5/apache2/conf.d/20-memcached.ini'
-#end
-
-link '/etc/php5/apache2/conf.d/20-memcached.ini' do
-	to '/etc/php5/mods-available/memcached.ini'
+link '/etc/php5/mods-available/memcached.ini' do
+	to '/etc/php5/apache2/conf.d/20-memcached.ini'
 end
 
-link '/etc/php5/cli/conf.d/20-memcached.ini' do
-	to '/etc/php5/mods-available/memcached.ini'
-end
-
-#link '/etc/php5/mods-available/memcached.ini' do
-#	to '/etc/php5/cli/conf.d/20-memcached.ini'
+#link '/etc/php5/apache2/conf.d/20-memcached.ini' do
+#	to '/etc/php5/mods-available/memcached.ini'
 #end
+
+#link '/etc/php5/cli/conf.d/20-memcached.ini' do
+#	to '/etc/php5/mods-available/memcached.ini'
+#end
+
+link '/etc/php5/mods-available/memcached.ini' do
+	to '/etc/php5/cli/conf.d/20-memcached.ini'
+end
