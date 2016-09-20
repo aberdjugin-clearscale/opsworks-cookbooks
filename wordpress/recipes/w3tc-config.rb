@@ -3,8 +3,8 @@
 
 template '/srv/www/nimblestorage/current/wp-content/w3tc-config/master.php' do
 	source 'master.php.erb'
-	owner 'root'
-	group 'root'
+	owner 'www-data'
+	group 'www-data'
 	mode '0644'
 	variables ({
      		:cache_srv => node[:opsworks][:deploy][:elasticache]
