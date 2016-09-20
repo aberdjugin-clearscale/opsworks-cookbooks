@@ -9,7 +9,7 @@ template '/etc/php5/mods-available/memcached.ini' do
 	group 'root'
 	mode '0644'
 	variables ({
-     		:cache_srv => node[:deploy][:elasticache]
+     		:cache_srv => node[:opsworks][:deploy][:elasticache]
     	})
 end
 
