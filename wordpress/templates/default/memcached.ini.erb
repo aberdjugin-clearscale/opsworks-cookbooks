@@ -1,7 +1,7 @@
 extension=amazon-elasticache-cluster-client.so
 [memcached]
 session.save_handler=memcached
-session.save_path=<%= @cache_srv %>
+session.save_path="<%= @cache_srv %>:11211"
 memcached.sess_locking = On
 memcached.sess_lock_wait = 150000
 memcached.sess_prefix = "memc.sess.key."
