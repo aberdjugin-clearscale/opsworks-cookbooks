@@ -35,7 +35,8 @@ node[:deploy].each do |app_name, deploy|
             :user       => (node[:opsworks][:database][:username] rescue nil),
             :password   => (node[:opsworks][:database][:password] rescue nil),
             :host       => (node[:opsworks][:database][:host] rescue nil),
-            :keys       => (keys rescue nil)
+            :keys       => (keys rescue nil),
+            :cache_srv => node[:opsworks][:deploy][:elasticache]
         )
     end
 
