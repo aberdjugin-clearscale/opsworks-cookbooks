@@ -44,6 +44,8 @@ node[:deploy].each do |app_name, deploy|
 	    :secure_auth_salt	=> (node[:opsworks][:wpkeys][:SECURE_AUTH_SALT]),
 	    :logged_in_salt	=> (node[:opsworks][:wpkeys][:LOGGED_IN_SALT]),
 	    :nonce_salt		=> (node[:opsworks][:wpkeys][:NONCE_SALT]),
+	    :secret_key		=> (node[:opsworks][:wpkeys][:SECRET_KEY]),
+	    :secret_salt	=> (node[:opsworks][:wpkeys][:SECRET_SALT]),
 #            :keys       => (keys rescue nil),
 	    :cache_srv => node[:opsworks][:deploy][:elasticache]
         )
