@@ -94,8 +94,15 @@ if ( !defined('ABSPATH') )
 /**
  * Reset login and admin paths
  */
+/** Old, changed 09272016
+* define('WP_ADMIN_SECRET_PATH', 'secret-admin');
+* define('ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_SECRET_PATH);
+* define('WP_LOGIN_SECRET_PATH', 'secret-login');
+*/
+
 define('WP_ADMIN_SECRET_PATH', 'secret-admin');
-define('ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_SECRET_PATH);
+define('SITECOOKIEPATH', '/');
+define('ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_SECRET_PATH.'/');
 define('WP_LOGIN_SECRET_PATH', 'secret-login');
 
 /** Sets up WordPress vars and included files. */
