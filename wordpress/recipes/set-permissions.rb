@@ -13,11 +13,11 @@ execute 'set_permissions' do
 end
 
 execute 'set_permissions' do
-	command "chown -R root #{node[:deploy][:nimblestorage][:deploy_to]}/current/wp-content/plugins"
+	command "chown -R deploy #{node[:deploy][:nimblestorage][:deploy_to]}/current/wp-content/plugins"
 	action :run
 end
 
 execute 'set_permissions' do
-	command "chown -R root #{node[:deploy][:nimblestorage][:deploy_to]}/current/wp-content/themes"
+	command "chown -R deploy #{node[:deploy][:nimblestorage][:deploy_to]}/current/wp-content/themes"
 	action :run
 end
